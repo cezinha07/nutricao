@@ -13,21 +13,24 @@ titulo.textContent = "Fica Grande Nutrição";
 
 //mudanças na tabela
 //armazena na variavel paciente o dados do primeiro paciente
-let paciente = document.querySelector("#primeiro-paciente");
+let paciente = document.querySelectorAll(".paciente");
 console.log(paciente);
 
-let tdPeso = paciente.querySelector(".info-peso");
+//criaçao looping for
+for(i = 0; i<paciente.length; i++){
+
+    let tdPeso = paciente.querySelector(".info-peso");
 let tdAltura = paciente.querySelector(".info-altura");
 
 
+let paciente = paciente[i];
 let peso = tdPeso.textContent;
 let altura = tdAltura.textContent;
 
 
-console.log(imc);
 
 let tdImc = paciente.querySelector(".info-imc")
-tdImc.textContent = imc;
+
 
 //validação de dados
 
@@ -36,26 +39,32 @@ let alturaEhValida = true;
 
 
 
-
+//verifica se o peso é valido
 if(peso <= 0 || peso >= 3){
     console.log("Peso inválido!");
     tdImc.textContent = "peso inválido!"
     let pesoEhValido = false;
 }
 
-//DESAFIO!!
-//FAZER APARECER O ERRO "PESO INVÁLIDO"
-//NA CÉLULA DO IMC NA TABELA
 
+//verifica se a altura é valida
 if(altura <= 0 || altura >= 3){
     tdImc.textContent = "Altura invalida!";
     let alturaEhValida = false;
 }
 
+//verifica se o peso e a altura são validos
 if(pesoEhValido && alturaEhValida){
     let imc = peso / (altura*altura); 
+    tdImc.textContent = imc;
+}else{
+    tdImc.textContent = "Altura e/ou peso invalido"
 }
 
 
+
+
+
+}
 
 
